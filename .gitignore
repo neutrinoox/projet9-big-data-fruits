@@ -1,0 +1,25 @@
+# Donnees locales lourdes
+# On ne pousse pas les images ni les resultats volumineux sur GitHub.
+data/
+outputs/
+models/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Systeme
+.DS_Store
+Thumbs.db
+
+# AWS / credentials
+.aws/
+*.pem
+*.key

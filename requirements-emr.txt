@@ -1,0 +1,6 @@
+# Dependances necessaires sur les noeuds EMR pour executer le pipeline image.
+pandas>=2.0.0
+numpy>=1.24.0
+pillow>=10.0.0
+pyarrow>=14.0.0
+tensorflow-cpu>=2.15.0

@@ -2,7 +2,7 @@
 
 ## Objectif
 
-Cette page explique comment lancer le projet sur ton ordinateur avant AWS.
+Cette page explique comment lancer le projet sur l'ordinateur avant AWS.
 
 ## 1. Recuperer le projet
 

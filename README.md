@@ -2,6 +2,8 @@
 
 Projet OpenClassrooms réalisé pour la startup fictive **Fruits!**.
 
+[Ouvrir le notebook dans Google Colab](https://colab.research.google.com/github/neutrinoox/projet9-big-data-fruits/blob/main/notebooks/P9_traitement_big_data_cloud.ipynb)
+
 ## Objectif
 
 Construire une chaîne de traitement capable de passer à l'échelle :

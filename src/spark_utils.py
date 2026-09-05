@@ -5,7 +5,7 @@ et lire les chemins des images.
 """
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import input_file_name, regexp_extract
+from pyspark.sql.functions import col, input_file_name, regexp_extract
 
 
 
@@ -42,4 +42,7 @@ def read_image_paths(spark: SparkSession, images_path: str):
     # Exemple : data/fruits/Training/Banana/1.jpg -> Banana
     df = df.withColumn("label", regexp_extract("image_path", r"/([^/]+)/[^/]+$", 1))
 
-    return df.select("image_path", "label", "content")
+    return (
+        df.filter(col("extension").isin("jpg", "jpeg", "png"))
+        .select("image_path", "label", "content")
+    )

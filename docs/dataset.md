@@ -40,6 +40,9 @@ Le pipeline doit :
 4. appliquer une PCA ;
 5. sauvegarder les resultats en Parquet.
 
+Pour le test local, `scripts/prepare_sample.py` fabrique une copie équilibrée
+de 100 images dans `data/sample`. Le dataset original n'est pas modifié.
+
 ## Etape AWS
 
 Quand le dataset sera telecharge, il faudra l'envoyer dans S3, par exemple :

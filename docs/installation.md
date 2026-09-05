@@ -1,58 +1,46 @@
 # Installation locale
 
-## Objectif
-
-Cette page explique comment lancer le projet sur l'ordinateur avant AWS.
-
-## 1. Recuperer le projet
+## 1. Récupérer le projet
 
 ```bash
 git clone https://github.com/neutrinoox/projet9-big-data-fruits.git
 cd projet9-big-data-fruits
 ```
 
-## 2. Creer un environnement Python
+## 2. Créer l'environnement
 
 ```bash
 python -m venv .venv
 ```
 
-Activation Windows :
+Windows : `.venv\\Scripts\\activate`
 
-```bash
-.venv\Scripts\activate
-```
+Mac/Linux : `source .venv/bin/activate`
 
-Activation Mac/Linux :
-
-```bash
-source .venv/bin/activate
-```
-
-## 3. Installer les dependances
+## 3. Installer
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 4. Ajouter le dataset
+Java doit aussi être installé pour PySpark.
 
-Le dataset doit etre place ici :
-
-```text
-data/fruits/
-```
-
-Ce dossier est ignore par GitHub.
-
-## 5. Tester le pipeline local
+## 4. Préparer les données
 
 ```bash
-python -m src.pipeline_local
+python -m scripts.download_dataset
+python -m src.validate_dataset
+python -m scripts.prepare_sample
 ```
 
-Si tout fonctionne, un fichier sera cree :
+## 5. Exécuter les preuves de concept
 
-```text
-outputs/sample_features.csv
+```bash
+python -m src.pipeline_local --input data/sample
+python -m src.pipeline_spark --input data/sample --output outputs/spark_pca
 ```
+
+Résultats attendus :
+
+- `outputs/local_features_pca.parquet` ;
+- dossier Parquet `outputs/spark_pca`.

@@ -2,7 +2,6 @@
 # On ne pousse pas les images ni les resultats volumineux sur GitHub.
 data/
 outputs/
-models/
 
 # Python
 __pycache__/

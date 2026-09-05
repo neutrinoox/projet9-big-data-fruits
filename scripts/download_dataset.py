@@ -35,12 +35,13 @@ def main():
     ]
     subprocess.run(command, check=True)
 
-    # Kaggle nomme habituellement l'archive fruits.zip.
+    # Kaggle nomme actuellement l'archive fruits.zip.
     downloaded_zip = DATA_DIR.parent / "fruits.zip"
-    if not downloaded_zip.exists():
+    if downloaded_zip.exists():
+        ZIP_PATH.unlink(missing_ok=True)
+        downloaded_zip.rename(ZIP_PATH)
+    elif not ZIP_PATH.exists():
         raise FileNotFoundError("Archive Kaggle introuvable apres le telechargement.")
-
-    downloaded_zip.rename(ZIP_PATH)
 
     # Extrait les images dans data/fruits/.
     DATA_DIR.mkdir(parents=True, exist_ok=True)

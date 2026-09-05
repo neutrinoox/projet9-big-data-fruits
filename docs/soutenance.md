@@ -27,6 +27,7 @@ Dataset images -> S3 -> EMR Spark -> features CNN -> PCA -> Parquet sur S3
 ResNet50 est un modele deja entraine sur ImageNet.
 On ne l'utilise pas pour classifier directement les fruits.
 On l'utilise comme extracteur de caracteristiques.
+Ses poids sont envoyés une seule fois aux workers avec Spark broadcast.
 
 ## Role de la PCA
 
@@ -45,3 +46,4 @@ Une region europeenne limite les risques RGPD.
 - Les resultats lourds sont stockes sur S3.
 - Le cluster EMR doit etre eteint apres execution.
 - Le pipeline est concu pour passer du local vers le cloud.
+- La sortie Parquet conserve le chemin, le label et le vecteur PCA.

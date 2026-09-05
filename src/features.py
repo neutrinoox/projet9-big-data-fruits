@@ -4,6 +4,8 @@ Le principe du projet : transformer chaque image en vecteur numerique.
 On utilise un CNN pre-entraine comme extracteur de caracteristiques.
 """
 
+from collections.abc import Iterable
+
 import numpy as np
 from PIL import Image
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
@@ -12,14 +14,14 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from src.config import IMAGE_SIZE
 
 
-def build_feature_extractor():
+def build_feature_extractor(weights="imagenet"):
     """Cree le modele ResNet50 sans sa couche de classification.
 
     include_top=False retire la derniere couche qui predit les classes ImageNet.
     pooling='avg' transforme la sortie du CNN en un vecteur plat.
     """
     model = ResNet50(
-        weights="imagenet",
+        weights=weights,
         include_top=False,
         pooling="avg",
         input_shape=(IMAGE_SIZE[0], IMAGE_SIZE[1], 3),
@@ -55,3 +57,15 @@ def extract_single_image_features(model, image_path: str) -> np.ndarray:
 
     # On renvoie un vecteur 1D plus simple a stocker.
     return features.flatten()
+
+
+def extract_batch_features(model, image_paths: Iterable[str]) -> np.ndarray:
+    """Extrait les features de plusieurs images en une seule prediction.
+
+    Le traitement par lots est nettement plus rapide que l'appel du modele
+    image par image et reproduit mieux le futur traitement distribue.
+    """
+    arrays = [load_image_as_array(path)[0] for path in image_paths]
+    if not arrays:
+        return np.empty((0, 2048), dtype=np.float32)
+    return model.predict(np.stack(arrays), verbose=0)

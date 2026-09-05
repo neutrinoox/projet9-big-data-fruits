@@ -5,7 +5,7 @@ et lire les chemins des images.
 """
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, input_file_name, regexp_extract
+from pyspark.sql.functions import col, regexp_extract
 
 
 
@@ -33,10 +33,14 @@ def read_image_paths(spark: SparkSession, images_path: str):
     Exemple local : data/fruits/Training/*
     Exemple S3 : s3://bucket/data/fruits/Training/*
     """
-    df = spark.read.format("binaryFile").load(images_path)
+    df = (
+        spark.read.format("binaryFile")
+        .option("recursiveFileLookup", "true")
+        .load(images_path)
+    )
 
     # input_file_name recupere le chemin exact du fichier lu par Spark.
-    df = df.withColumn("image_path", input_file_name())
+    df = df.withColumn("image_path", col("path"))
 
     # Le label est extrait depuis le nom du dossier parent.
     # Exemple : data/fruits/Training/Banana/1.jpg -> Banana

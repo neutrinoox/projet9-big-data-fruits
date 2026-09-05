@@ -45,7 +45,7 @@ disposant de 8 Go de RAM.
 - `notebooks/P9_traitement_big_data_cloud.ipynb` : notebook principal du projet.
 - `src/features.py` : préparation des images et extraction ResNet50.
 - `src/pipeline_local.py` : contrôle rapide hors Spark.
-- `src/pipeline_spark.py` : pipeline final local ou EMR, avec poids diffusés par broadcast.
+- `src/pipeline_spark.py` : pipeline final local ou EMR, par partitions et avec broadcast.
 - `src/spark_utils.py` : lecture distribuée des images.
 - `src/validate_dataset.py` : audit du dataset.
 - `scripts/` : téléchargement et préparation d'un échantillon.

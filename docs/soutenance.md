@@ -27,7 +27,8 @@ Dataset images -> S3 -> EMR Spark -> features CNN -> PCA -> Parquet sur S3
 ResNet50 est un modele deja entraine sur ImageNet.
 On ne l'utilise pas pour classifier directement les fruits.
 On l'utilise comme extracteur de caracteristiques.
-Ses poids sont envoyés une seule fois aux workers avec Spark broadcast.
+Ses poids sont envoyés une seule fois aux workers avec Spark broadcast. Chaque
+partition traite ensuite ses images par lots pour limiter les chargements du modèle.
 
 ## Role de la PCA
 

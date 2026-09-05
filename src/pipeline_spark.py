@@ -6,15 +6,12 @@ python -m src.pipeline_spark --input data/fruits/Training --output outputs/spark
 
 import argparse
 import io
-from collections.abc import Iterator
 
 import numpy as np
-import pandas as pd
 from PIL import Image
 from pyspark.ml.feature import PCA
 from pyspark.ml.functions import array_to_vector
-from pyspark.sql.functions import col, pandas_udf
-from pyspark.sql.types import ArrayType, FloatType
+from pyspark.sql.types import ArrayType, FloatType, StringType, StructField, StructType
 
 from src.config import IMAGE_SIZE, INFERENCE_BATCH_SIZE, LOCAL_MAX_IMAGES, LOCAL_PCA_COMPONENTS
 from src.features import build_feature_extractor
@@ -31,31 +28,34 @@ def parse_args():
     return parser.parse_args()
 
 
-def make_feature_udf(broadcast_weights, batch_size):
-    """Construit l'UDF distribuée et partage les poids via Spark broadcast."""
+def extract_partition(rows, weights, batch_size):
+    """Extrait les features par lots à l'intérieur d'une partition Spark."""
+    from tensorflow.keras.applications.resnet50 import preprocess_input
 
-    @pandas_udf(ArrayType(FloatType()))
-    def featurize(iterator: Iterator[pd.Series]) -> Iterator[pd.Series]:
-        # Les poids sont fournis par broadcast : aucun téléchargement par worker.
-        model = build_feature_extractor(weights=None)
-        model.set_weights(broadcast_weights.value)
+    model = build_feature_extractor(weights=None)
+    model.set_weights(weights)
+    batch = []
 
-        for contents in iterator:
-            arrays = []
-            for content in contents:
-                image = Image.open(io.BytesIO(content)).convert("RGB").resize(IMAGE_SIZE)
-                arrays.append(np.asarray(image, dtype=np.float32))
+    def predict(current_batch):
+        arrays = []
+        for row in current_batch:
+            image = Image.open(io.BytesIO(row.content)).convert("RGB").resize(IMAGE_SIZE)
+            arrays.append(np.asarray(image, dtype=np.float32))
+        vectors = model.predict(
+            preprocess_input(np.stack(arrays)),
+            batch_size=batch_size,
+            verbose=0,
+        )
+        for row, vector in zip(current_batch, vectors):
+            yield row.image_path, row.label, vector.astype(float).tolist()
 
-            from tensorflow.keras.applications.resnet50 import preprocess_input
-
-            vectors = model.predict(
-                preprocess_input(np.stack(arrays)),
-                batch_size=batch_size,
-                verbose=0,
-            )
-            yield pd.Series([row.astype(float).tolist() for row in vectors])
-
-    return featurize
+    for row in rows:
+        batch.append(row)
+        if len(batch) == batch_size:
+            yield from predict(batch)
+            batch = []
+    if batch:
+        yield from predict(batch)
 
 
 def run_pipeline(input_path, output_path, max_images, components, batch_size):
@@ -69,9 +69,15 @@ def run_pipeline(input_path, output_path, max_images, components, batch_size):
 
     driver_model = build_feature_extractor()
     broadcast_weights = spark.sparkContext.broadcast(driver_model.get_weights())
-    featurize = make_feature_udf(broadcast_weights, batch_size)
-
-    featured = images.withColumn("features_array", featurize(col("content")))
+    schema = StructType([
+        StructField("image_path", StringType(), nullable=False),
+        StructField("label", StringType(), nullable=False),
+        StructField("features_array", ArrayType(FloatType(), containsNull=False), nullable=False),
+    ])
+    feature_rows = images.rdd.mapPartitions(
+        lambda rows: extract_partition(rows, broadcast_weights.value, batch_size)
+    )
+    featured = spark.createDataFrame(feature_rows, schema)
     featured = (
         featured.withColumn("features", array_to_vector("features_array"))
         .select("image_path", "label", "features")

@@ -40,7 +40,7 @@ disposant de 8 Go de RAM.
 
 ## Contenu du dépôt
 
-- `notebooks/01_pipeline_pedagogique.ipynb` : démonstration commentée du prototype local.
+- `notebooks/P9_traitement_big_data_cloud.ipynb` : notebook principal du projet.
 - `src/features.py` : préparation des images et extraction ResNet50.
 - `src/pipeline_local.py` : contrôle rapide hors Spark.
 - `src/pipeline_spark.py` : pipeline final local ou EMR, avec poids diffusés par broadcast.

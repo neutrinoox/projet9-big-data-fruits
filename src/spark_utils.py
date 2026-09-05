@@ -43,6 +43,6 @@ def read_image_paths(spark: SparkSession, images_path: str):
     df = df.withColumn("label", regexp_extract("image_path", r"/([^/]+)/[^/]+$", 1))
 
     return (
-        df.filter(col("extension").isin("jpg", "jpeg", "png"))
+        df.filter(col("image_path").rlike(r"(?i)\.(jpe?g|png)$"))
         .select("image_path", "label", "content")
     )

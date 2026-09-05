@@ -16,10 +16,14 @@ def create_spark_session(app_name: str = "P9 Big Data Fruits") -> SparkSession:
     En local, Spark utilise ton ordinateur.
     Sur AWS EMR, Spark utilise le cluster.
     """
+    java_options = "--add-opens=java.base/java.nio=ALL-UNNAMED"
     spark = (
         SparkSession.builder
         .appName(app_name)
         .config("spark.sql.execution.arrow.pyspark.enabled", "true")
+        # Nécessaire avec les versions récentes de Java utilisées par Colab.
+        .config("spark.driver.extraJavaOptions", java_options)
+        .config("spark.executor.extraJavaOptions", java_options)
         .getOrCreate()
     )
     return spark

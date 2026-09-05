@@ -41,7 +41,8 @@ Le pipeline doit :
 5. sauvegarder les resultats en Parquet.
 
 Pour le test local, `scripts/prepare_sample.py` fabrique une copie équilibrée
-de 100 images dans `data/sample`. Le dataset original n'est pas modifié.
+de 100 images réparties entre 10 classes dans `data/sample`. Le dataset original
+n'est pas modifié.
 
 ## Etape AWS
 

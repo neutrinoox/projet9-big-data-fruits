@@ -19,7 +19,7 @@ class DatasetUtilsTest(unittest.TestCase):
             (root / "notes.txt").touch()
 
             images = find_images(root)
-            sample = select_balanced_images(images, 4)
+            sample = select_balanced_images(images, 4, max_classes=2)
 
             self.assertEqual(len(images), 5)
             self.assertEqual(len(sample), 4)

@@ -9,7 +9,7 @@ python -m scripts.prepare_sample
 ```
 
 Le dataset complet reste dans `data/fruits`. Un échantillon équilibré de
-100 images est copié dans `data/sample`.
+100 images réparties entre 10 classes est copié dans `data/sample`.
 
 ## Tester ResNet50 + PCA sans Spark
 

@@ -26,16 +26,19 @@ def find_images(images_root):
     return paths
 
 
-def select_balanced_images(image_paths, max_images):
-    """Sélectionne autant que possible le même nombre d'images par classe."""
+def select_balanced_images(image_paths, max_images, max_classes=10):
+    """Sélectionne un échantillon équilibré parmi des classes variées."""
     by_label = {}
     for path in image_paths:
         by_label.setdefault(path.parent.name, []).append(path)
 
     selected = []
-    labels = sorted(by_label)
+    all_labels = sorted(by_label)
+    class_count = min(max_classes, len(all_labels), max_images)
+    labels = [all_labels[index * len(all_labels) // class_count] for index in range(class_count)]
     cursor = 0
-    while len(selected) < min(max_images, len(image_paths)):
+    available = sum(len(by_label[label]) for label in labels)
+    while len(selected) < min(max_images, available):
         added = False
         for label in labels:
             if cursor < len(by_label[label]):

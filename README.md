@@ -1,67 +1,46 @@
 # Projet 9 — Traitement Big Data sur le Cloud
 
-Projet OpenClassrooms réalisé pour la startup fictive **Fruits!**.
+Projet OpenClassrooms **Fruits!** : images → ResNet50 → centrage → PCA Spark → Parquet.
+Le projet prépare un traitement distribué, sans entraîner un classificateur de fruits.
 
-[Ouvrir le notebook dans Google Colab](https://colab.research.google.com/github/neutrinoox/projet9-big-data-fruits/blob/main/notebooks/P9_traitement_big_data_cloud.ipynb)
+[Notebook de validation Colab](https://colab.research.google.com/github/neutrinoox/projet9-big-data-fruits/blob/fix/p9-pre-aws-validation/notebooks/P9_traitement_big_data_cloud.ipynb)
 
-## Objectif
+## État réel
 
-Construire une chaîne de traitement capable de passer à l'échelle :
+Le notebook précédent contenait une exécution locale réussie sur 100 images et 10 classes.
+La version corrigée doit être réexécutée : les anciennes sorties ont été retirées pour ne pas
+les attribuer au nouveau code. Consulter [le bilan de validation](docs/validation.md).
+**Aucune exécution AWS n'est encore attestée par ce dépôt.**
 
-1. lire des images de fruits ;
-2. extraire un vecteur de 2 048 caractéristiques avec ResNet50 pré-entraîné ;
-3. réduire sa dimension avec une PCA ;
-4. sauvegarder les résultats en Parquet.
+## Corrections de préparation AWS
 
-Il n'est pas demandé d'entraîner un classificateur.
+- Copie des images sans collisions, protection des dossiers et manifeste SHA-256.
+- Redistribution explicite avant l'extraction, broadcast et lots TensorFlow.
+- Relecture Parquet : effectifs, unicité, dimensions et valeurs finies.
+- Sauvegarde du centrage, de la PCA et des mesures de variance, temps, partitions et hôtes.
+- Nouvelle destination pour chaque essai ; aucun écrasement automatique des runs.
+- Archive du code pour `--py-files`, dépendances directes fixées et bootstrap Python isolé.
 
-## Architecture
+## Démarrage
 
-```text
-Images -> Spark binaryFile -> ResNet50 -> Spark PCA -> Parquet
-```
+Suivre [installation.md](docs/installation.md), puis [commands.md](docs/commands.md).
+Le dossier Training doit être choisi explicitement pour éviter de mélanger variantes et splits.
+L'échantillon de départ est limité à 100 images, 10 classes ; augmenter seulement après validation.
 
-Le même pipeline accepte un chemin local pendant la preuve de concept et un
-chemin `s3://` lors du passage sur AWS EMR.
+## Organisation
 
-## Démarrage local
+| Fichier | Rôle |
+|---|---|
+| `notebooks/P9_traitement_big_data_cloud.ipynb` | Parcours Colab avec commentaires français et preuves sauvegardées |
+| `scripts/prepare_sample.py` | Échantillon sûr et manifeste |
+| `src/pipeline_local.py` | Contrôle ResNet50 + sklearn PCA hors Spark |
+| `src/pipeline_spark.py` | Pipeline à exécuter en local puis sur EMR |
+| `scripts/package_emr.py` | Paquet du code et manifeste pour les workers |
+| `bootstrap/install_emr_dependencies.sh` | Installation identique sur chaque nœud EMR |
+| `docs/criteres_evaluation.md` | CE retrouvés, preuves et étapes restant à valider |
+| `docs/aws_plan.md` | Architecture, paramètres à confirmer et démonstration |
+| `docs/soutenance.md` | Explications et questions de jury |
 
-```bash
-python -m venv .venv
-source .venv/bin/activate          # Windows : .venv\\Scripts\\activate
-pip install -r requirements.txt
-python -m scripts.download_dataset
-python -m src.validate_dataset
-python -m scripts.prepare_sample
-python -m src.pipeline_local --input data/sample
-python -m src.pipeline_spark --input data/sample --output outputs/spark_pca
-```
-
-Le prototype est limité à 100 images afin de rester raisonnable sur une machine
-disposant de 8 Go de RAM.
-
-## Contenu du dépôt
-
-- `notebooks/P9_traitement_big_data_cloud.ipynb` : notebook principal du projet.
-- `src/features.py` : préparation des images et extraction ResNet50.
-- `src/pipeline_local.py` : contrôle rapide hors Spark.
-- `src/pipeline_spark.py` : pipeline final local ou EMR, par partitions et avec broadcast.
-- `src/spark_utils.py` : lecture distribuée des images.
-- `src/validate_dataset.py` : audit du dataset.
-- `scripts/` : téléchargement et préparation d'un échantillon.
-- `docs/` : installation, commandes, architecture AWS et aide à la soutenance.
-- `bootstrap/` : installation des dépendances Python sur les nœuds EMR.
-
-Les images, résultats, identifiants AWS et clés privées sont exclus de Git.
-
-## État
-
-- [x] Structure du dépôt
-- [x] Téléchargement et validation du dataset
-- [x] Prototype local ResNet50 + PCA
-- [x] Pipeline PySpark réutilisable sur EMR
-- [x] Sortie Parquet
-- [ ] Exécution locale avec le dataset réel et conservation des résultats
-- [ ] Déploiement S3 / EMR
-- [ ] Captures et mesures de l'exécution cloud
-- [ ] Support final de soutenance
+Les données, paquets générés, résultats et secrets ne sont pas versionnés dans Git.
+Après chaque run, conserver les preuves dans un espace durable, puis sur S3 pour le livrable cloud.
+La grille publique retrouvée est une reproduction étudiante, à confirmer auprès d'OC lors de la reprise.

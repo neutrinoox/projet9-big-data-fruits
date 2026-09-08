@@ -22,3 +22,6 @@ Thumbs.db
 .aws/
 *.pem
 *.key
+
+# Paquets de déploiement et preuves d'exécution générés localement.
+dist/

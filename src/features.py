@@ -32,7 +32,8 @@ def build_feature_extractor(weights="imagenet"):
 def load_image_as_array(image_path: str) -> np.ndarray:
     """Charge une image locale et la prepare pour ResNet50."""
     # On force le format RGB pour eviter les problemes avec les images en niveaux de gris.
-    image = Image.open(image_path).convert("RGB")
+    with Image.open(image_path) as source:
+        image = source.convert("RGB")
 
     # ResNet50 attend des images de taille 224 x 224.
     image = image.resize(IMAGE_SIZE)
@@ -68,4 +69,5 @@ def extract_batch_features(model, image_paths: Iterable[str]) -> np.ndarray:
     arrays = [load_image_as_array(path)[0] for path in image_paths]
     if not arrays:
         return np.empty((0, 2048), dtype=np.float32)
-    return model.predict(np.stack(arrays), verbose=0)
+    # L'appel direct évite de créer un pool tf.data pour chaque petit lot.
+    return model(np.stack(arrays), training=False).numpy()

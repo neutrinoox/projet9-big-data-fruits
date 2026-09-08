@@ -30,6 +30,10 @@ def parse_args():
 
 def run_local_pipeline(input_path, output_path, max_images, components, batch_size):
     """Execute le prototype et renvoie le DataFrame final et le modele PCA."""
+    # Refuse les paramètres invalides avant de charger ResNet50.
+    if components < 1 or batch_size < 1:
+        raise ValueError("Composantes et taille du lot doivent être positives.")
+    output_path = Path(output_path)
     image_paths = select_balanced_images(find_images(input_path), max_images)
     if len(image_paths) < 2:
         raise ValueError("Il faut au moins deux images pour appliquer une PCA.")
@@ -40,6 +44,9 @@ def run_local_pipeline(input_path, output_path, max_images, components, batch_si
         batch = image_paths[start : start + batch_size]
         feature_batches.append(extract_batch_features(model, map(str, batch)))
     features = np.vstack(feature_batches)
+    # Une image doit produire exactement 2 048 valeurs finies.
+    if features.shape != (len(image_paths), 2048) or not np.isfinite(features).all():
+        raise ValueError("Caractéristiques ResNet50 invalides.")
 
     n_components = min(components, len(image_paths) - 1, features.shape[1])
     pca = PCA(n_components=n_components, random_state=42)

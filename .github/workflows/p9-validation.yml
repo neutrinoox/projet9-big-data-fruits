@@ -43,6 +43,10 @@ jobs:
           python -m unittest discover -v 2>&1 | tee outputs/tests.log
           bash -n bootstrap/install_emr_dependencies.sh
           python -m scripts.package_emr
+      - name: Valider 100 vraies images Fruits-360
+        run: |
+          # Vérifie le même pipeline sur 100 images officielles dont les empreintes sont fixées.
+          python -m scripts.validate_real_fruits 2>&1 | tee outputs/real-fruits.log
       - name: Conserver les preuves
         if: always()
         uses: actions/upload-artifact@v4

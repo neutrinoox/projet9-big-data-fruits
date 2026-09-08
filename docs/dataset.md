@@ -5,6 +5,17 @@ Plusieurs variantes et des dossiers imbriqués peuvent être présents : ne pas 
 se trouve directement sous `data/fruits`. Le notebook affiche les candidats et demande un choix explicite
 s'il ne peut pas identifier une seule variante 100×100.
 
+## Validation légère et fixée
+
+Le notebook utilise par défaut `scripts.download_validation_sample` : 100 images de 10 classes,
+récupérées depuis le dépôt officiel `fruits-360/fruits-360-100x100`, commit
+`911836bb2351860687a0f6a45f0e7f39295fa4d0`. Son README référence également le dataset Kaggle.
+Les chemins et empreintes Git sont enregistrés dans `fruits_validation_manifest.json`.
+Ce sous-ensemble suffit aux contrôles fonctionnels et évite de télécharger le dataset entier.
+La version Kaggle complète reste disponible pour les essais de montée en volume.
+
+Source : https://github.com/fruits-360/fruits-360-100x100/tree/911836bb2351860687a0f6a45f0e7f39295fa4d0
+
 ## Prototype
 
 Choisir une seule variante et son split Training. Préparer 100 images réparties entre 10 classes

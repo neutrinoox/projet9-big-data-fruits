@@ -1,0 +1,56 @@
+name: P9 validation
+# Exécute les contrôles sur GitHub sans accès AWS ni données privées.
+on:
+  push:
+    branches: [main, fix/p9-pre-aws-validation]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      TF_NUM_INTRAOP_THREADS: '1'
+      TF_NUM_INTEROP_THREADS: '1'
+      P9_RUN_SPARK_TEST: '1'
+      P9_TEST_WEIGHTS: imagenet
+      P9_TEST_EVIDENCE: outputs/ci-smoke
+      PYSPARK_SUBMIT_ARGS: '--master local[2] --driver-memory 3g pyspark-shell'
+    steps:
+      # Installe les runtimes de test du dépôt, avec Java 17 et Python 3.11.
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Installer les dépendances
+        run: |
+          # Spark est installé ici uniquement pour le test local ; EMR fournit son propre Spark.
+          python -m pip install -r requirements-emr.txt pyspark==3.5.2
+          python -m pip check
+      - name: Tester le code et le vrai pipeline
+        run: |
+          # Produit des preuves de test ; les images synthétiques ne constituent pas le livrable Fruits.
+          mkdir -p outputs
+          python -m pip freeze > outputs/environment.txt
+          python -m unittest discover -v 2>&1 | tee outputs/tests.log
+          bash -n bootstrap/install_emr_dependencies.sh
+          python -m scripts.package_emr
+      - name: Valider 100 vraies images Fruits-360
+        run: |
+          # Vérifie le même pipeline sur 100 images officielles dont les empreintes sont fixées.
+          python -m scripts.validate_real_fruits 2>&1 | tee outputs/real-fruits.log
+      - name: Conserver les preuves
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p9-validation
+          path: outputs/
+          retention-days: 30

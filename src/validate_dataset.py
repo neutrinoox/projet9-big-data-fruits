@@ -28,6 +28,9 @@ def find_images(images_root):
 
 def select_balanced_images(image_paths, max_images, max_classes=10):
     """Sélectionne un échantillon équilibré parmi des classes variées."""
+    # Refuse les tailles invalides avant toute sélection ou copie.
+    if max_images < 1 or max_classes < 1:
+        raise ValueError("Le nombre d'images et de classes doit être positif.")
     by_label = {}
     for path in image_paths:
         by_label.setdefault(path.parent.name, []).append(path)

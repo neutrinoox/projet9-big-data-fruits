@@ -1,0 +1,408 @@
+{
+  "repository": "fruits-360/fruits-360-100x100",
+  "revision": "911836bb2351860687a0f6a45f0e7f39295fa4d0",
+  "source": "https://www.kaggle.com/moltean/fruits",
+  "description": "100 images du split Training, 10 classes ; échantillon de validation, pas un benchmark représentatif.",
+  "images": [
+    {
+      "path": "Training/Almonds 1/r0_0_100.jpg",
+      "git_blob_sha": "9d7b5439aff16572bf6efaaf086a8068f44ad790"
+    },
+    {
+      "path": "Training/Almonds 1/r0_1_100.jpg",
+      "git_blob_sha": "c8cb13fa1f311f3482ebe53e9e72d9d5ebe47e30"
+    },
+    {
+      "path": "Training/Almonds 1/r0_10_100.jpg",
+      "git_blob_sha": "c5f2723d793914f3e458fa2b6035622170390ec2"
+    },
+    {
+      "path": "Training/Almonds 1/r0_100_100.jpg",
+      "git_blob_sha": "7b5b6e6af5d432c0d614c468ffc7c9d6a2b94d2c"
+    },
+    {
+      "path": "Training/Almonds 1/r0_101_100.jpg",
+      "git_blob_sha": "85e1d684c9ccfbda794de00f7c59505bf81d41fd"
+    },
+    {
+      "path": "Training/Almonds 1/r0_102_100.jpg",
+      "git_blob_sha": "7676a45d57124ebdefa57c8f96e8c88938ca1987"
+    },
+    {
+      "path": "Training/Almonds 1/r0_104_100.jpg",
+      "git_blob_sha": "a8633add4d9e2b2d9eef9206508d6b228c6d700e"
+    },
+    {
+      "path": "Training/Almonds 1/r0_105_100.jpg",
+      "git_blob_sha": "44d0dfe64cb964bac86392606614dfbb01f8e882"
+    },
+    {
+      "path": "Training/Almonds 1/r0_106_100.jpg",
+      "git_blob_sha": "dfbf3d6e98265323ec021e48f464a3f2948b1d79"
+    },
+    {
+      "path": "Training/Almonds 1/r0_108_100.jpg",
+      "git_blob_sha": "8d2f2cee790bcf2467fa0c824e5d0d4c1bcea148"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/10_100.jpg",
+      "git_blob_sha": "a2b6de56b4ae396cd4d347c1cefcb68607f67e5a"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/100_100.jpg",
+      "git_blob_sha": "7b5d8fa3fe1deb92d74482bb4edd951c0efaee22"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/101_100.jpg",
+      "git_blob_sha": "2cf3c51d7328eae20e33af815cb4ecaa1681d287"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/102_100.jpg",
+      "git_blob_sha": "13fc6d1a600f5109aca2085311171ede051229bb"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/103_100.jpg",
+      "git_blob_sha": "bb59a65bc97d3db42b2bb83b1785a25c0bc07a2f"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/104_100.jpg",
+      "git_blob_sha": "4d836b8be7c1a8a98c8e21699ae9cd477b12af6e"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/105_100.jpg",
+      "git_blob_sha": "95f3b182369040045c5564d8dbefd5857bb1aaf5"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/106_100.jpg",
+      "git_blob_sha": "ef42123d8f0015907dae74103e2f6f5b6654fe0a"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/107_100.jpg",
+      "git_blob_sha": "ea83d6d9fcc75a9b00ad43e53db170e3f784a11a"
+    },
+    {
+      "path": "Training/Apple Red Delicious 1/108_100.jpg",
+      "git_blob_sha": "41c7158596dd3287aaf09b9870bfde0a8e280fbd"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_0_100.jpg",
+      "git_blob_sha": "de44b76c3b249a9c748619eecb6c9f043812538d"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_1_100.jpg",
+      "git_blob_sha": "aaa87d6689658fa813ea1ccaf1a5187ee6740471"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_10_100.jpg",
+      "git_blob_sha": "4ecc4ec2d1209b76ad0962d15b09c5fe5c4710f6"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_100_100.jpg",
+      "git_blob_sha": "d2c1f3a61571e5f9edb6f3ec5b052f3bdc10c6d9"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_101_100.jpg",
+      "git_blob_sha": "5df1fc5b95cc4ccf49d2dfab6d5db49bf40cf71c"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_102_100.jpg",
+      "git_blob_sha": "c8226c64826e29f391bb2b5bad5cdf6423195fa5"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_104_100.jpg",
+      "git_blob_sha": "03d598ffe61a0dde4b8da20ac0703d48f25d43fc"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_105_100.jpg",
+      "git_blob_sha": "42616d8dd89ed031ddbeb29c221acc689b128992"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_106_100.jpg",
+      "git_blob_sha": "22fcaea045e0e6dfddf92b49234dd01800474308"
+    },
+    {
+      "path": "Training/Cactus fruit green 1/r0_108_100.jpg",
+      "git_blob_sha": "d28019df8f02db2b98fc1cee2846bf9452895482"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/0_100.jpg",
+      "git_blob_sha": "3d00b1786928f53ffea6b9416a829c18aa50d6f0"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/1_100.jpg",
+      "git_blob_sha": "78822d2558ff114ad56dfe900f42f629385ffbd6"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/10_100.jpg",
+      "git_blob_sha": "226a0e0b93738cf8215f76cb0b4a3d23f82e9712"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/100_100.jpg",
+      "git_blob_sha": "e94e2cff0b45b031f78d7793c6275044f8e1f4e5"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/108_100.jpg",
+      "git_blob_sha": "54ac6bd04177ca2cc25ffcecf620ef23998aeb0b"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/109_100.jpg",
+      "git_blob_sha": "96d6084de3118fa6e56b906a76845b159e134cf5"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/11_100.jpg",
+      "git_blob_sha": "69b42dfc7dd0e489732d916d427e4c0fbe64ef06"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/110_100.jpg",
+      "git_blob_sha": "755ae8ff0d213b36bf9aa7f25f6fd122b26d56eb"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/114_100.jpg",
+      "git_blob_sha": "b5fbf044790b8bbe327ffe4f9029bf225cdf8892"
+    },
+    {
+      "path": "Training/Cherry Wax Yellow 1/118_100.jpg",
+      "git_blob_sha": "ec65a5e37b0e13b2a325be1648fd2ed83ebdb49d"
+    },
+    {
+      "path": "Training/Grape Pink 1/0_100.jpg",
+      "git_blob_sha": "69ba92a8be06d623bf5cc458aae04be131cd94bc"
+    },
+    {
+      "path": "Training/Grape Pink 1/1_100.jpg",
+      "git_blob_sha": "1cd2213cb8aa9dfc643fa73e6b22e2209c8e0198"
+    },
+    {
+      "path": "Training/Grape Pink 1/10_100.jpg",
+      "git_blob_sha": "46f1c49de63f50e6bae4c0fae0ba0735ea43763e"
+    },
+    {
+      "path": "Training/Grape Pink 1/100_100.jpg",
+      "git_blob_sha": "6e8d9df8bb6d220fbdcf650bee2525d52c1fd9cf"
+    },
+    {
+      "path": "Training/Grape Pink 1/101_100.jpg",
+      "git_blob_sha": "1b142197e3c6d6c3d4a9cbf9e9b86f1be96cd7ce"
+    },
+    {
+      "path": "Training/Grape Pink 1/102_100.jpg",
+      "git_blob_sha": "f22e5627ee591961f32d3474dac2b0a19a463d8d"
+    },
+    {
+      "path": "Training/Grape Pink 1/103_100.jpg",
+      "git_blob_sha": "d91b8958ff7dc75a81a15c51a75edd291cf5ec10"
+    },
+    {
+      "path": "Training/Grape Pink 1/104_100.jpg",
+      "git_blob_sha": "d1aacd6677d3ec36c3ca05a9815b4518ee99da98"
+    },
+    {
+      "path": "Training/Grape Pink 1/105_100.jpg",
+      "git_blob_sha": "c9ff435322833be07f03a98e1a91ac8c3d10d60a"
+    },
+    {
+      "path": "Training/Grape Pink 1/106_100.jpg",
+      "git_blob_sha": "277e000fa3cd2bda0263203057901d9bcff4eeb7"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_0_100.jpg",
+      "git_blob_sha": "f8036688341d7777effe21ffcd5617a81dde053e"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_1_100.jpg",
+      "git_blob_sha": "f6fa882eb9cfe79feca50274582f6d0ba9e88718"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_10_100.jpg",
+      "git_blob_sha": "e46790023382d4e57cfb497de210e6ae77869f6a"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_100_100.jpg",
+      "git_blob_sha": "4223e45200fd1800a959f93ed7f900e5b4252937"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_101_100.jpg",
+      "git_blob_sha": "44b0ccf49d6410ffea25ee0f5de87d29411f18c4"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_102_100.jpg",
+      "git_blob_sha": "74094868c88ac902ef089d9b10c045e35f22f03c"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_104_100.jpg",
+      "git_blob_sha": "94480411c220306258630ff122bb658b386e0c1e"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_105_100.jpg",
+      "git_blob_sha": "b1596cfc4fd10d0c53d49197e29c7c5fd4578916"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_106_100.jpg",
+      "git_blob_sha": "48c7a36127caac4fc571aa5d26ec6550b999dec1"
+    },
+    {
+      "path": "Training/Mushroom champignon 2/r0_108_100.jpg",
+      "git_blob_sha": "c13dc2b5084d6a6429e97f9b27bc9a8cf1283a2f"
+    },
+    {
+      "path": "Training/Peach 5/r0_0_100.jpg",
+      "git_blob_sha": "1f0e0a4cd7977ec6e42644a54204335c502d58d9"
+    },
+    {
+      "path": "Training/Peach 5/r0_1_100.jpg",
+      "git_blob_sha": "27cab9b02ded7560bb760b21b49644ab9ac693d9"
+    },
+    {
+      "path": "Training/Peach 5/r0_10_100.jpg",
+      "git_blob_sha": "8e78a83854a5757d3392d2b4a23b305473c5a948"
+    },
+    {
+      "path": "Training/Peach 5/r0_100_100.jpg",
+      "git_blob_sha": "05962af4d91dcd9a6938f1659fca516c156e0aa5"
+    },
+    {
+      "path": "Training/Peach 5/r0_101_100.jpg",
+      "git_blob_sha": "5f915ba6e04b5329b5d456a0b4bf588aa9bc62ed"
+    },
+    {
+      "path": "Training/Peach 5/r0_102_100.jpg",
+      "git_blob_sha": "05cc455a767911b9704955129500228a0c767c49"
+    },
+    {
+      "path": "Training/Peach 5/r0_104_100.jpg",
+      "git_blob_sha": "4751352018cb5539ab058b33849e3d2ebca07abb"
+    },
+    {
+      "path": "Training/Peach 5/r0_105_100.jpg",
+      "git_blob_sha": "8352c8924bf6c9281df23593814999a93a9fd697"
+    },
+    {
+      "path": "Training/Peach 5/r0_106_100.jpg",
+      "git_blob_sha": "61be3529d7004f6413a450fe2dcc3f6b3df29f8f"
+    },
+    {
+      "path": "Training/Peach 5/r0_108_100.jpg",
+      "git_blob_sha": "5242e3ddbe706379f392fe155a50ed3f86a99f22"
+    },
+    {
+      "path": "Training/Pepper Green 1/0_100.jpg",
+      "git_blob_sha": "9b005b407f72db94ca863e1cf2776b45f9278f14"
+    },
+    {
+      "path": "Training/Pepper Green 1/1_100.jpg",
+      "git_blob_sha": "a26e942caf02c70d4b9f135e52c01886b5249582"
+    },
+    {
+      "path": "Training/Pepper Green 1/10_100.jpg",
+      "git_blob_sha": "ce48a3233a06bb16de2ce2df96f6f960920a0ba1"
+    },
+    {
+      "path": "Training/Pepper Green 1/11_100.jpg",
+      "git_blob_sha": "35996783489f3a0399d301404bad9603b0f87b26"
+    },
+    {
+      "path": "Training/Pepper Green 1/111_100.jpg",
+      "git_blob_sha": "b67167d2db007eff660a6b2a1245c5787dde1454"
+    },
+    {
+      "path": "Training/Pepper Green 1/112_100.jpg",
+      "git_blob_sha": "cf7d92f2677e31d3a11eecc435d54ebafe66ed16"
+    },
+    {
+      "path": "Training/Pepper Green 1/115_100.jpg",
+      "git_blob_sha": "62683f10ecffdaf81446912fc1e26ef192ce9b41"
+    },
+    {
+      "path": "Training/Pepper Green 1/12_100.jpg",
+      "git_blob_sha": "4d4b9d584cda3d5f883e7d61c3bf3cedaf9a65fd"
+    },
+    {
+      "path": "Training/Pepper Green 1/13_100.jpg",
+      "git_blob_sha": "f46052e17b235a80a3510704f8cd5e943703249e"
+    },
+    {
+      "path": "Training/Pepper Green 1/136_100.jpg",
+      "git_blob_sha": "ac993fdc9ebb20ac1f4e239351044ce2ef5df629"
+    },
+    {
+      "path": "Training/Quince 4/r0_0_100.jpg",
+      "git_blob_sha": "e07e5e86340ed9c901cbc96bee91589a006595f9"
+    },
+    {
+      "path": "Training/Quince 4/r0_1_100.jpg",
+      "git_blob_sha": "07dcfcb02ea4749a46883dcd678ad861f18485bf"
+    },
+    {
+      "path": "Training/Quince 4/r0_10_100.jpg",
+      "git_blob_sha": "f25e095adf20706795207c0a75f4d5b09fd0b6b9"
+    },
+    {
+      "path": "Training/Quince 4/r0_100_100.jpg",
+      "git_blob_sha": "384f72cde457407069af7210060c0ebc39c6c00c"
+    },
+    {
+      "path": "Training/Quince 4/r0_101_100.jpg",
+      "git_blob_sha": "07e1e2b12885d187bce9ceb3a499b54414074e63"
+    },
+    {
+      "path": "Training/Quince 4/r0_102_100.jpg",
+      "git_blob_sha": "686cd7bbf7df24a1b049e0a19a9d5684ff83f76f"
+    },
+    {
+      "path": "Training/Quince 4/r0_104_100.jpg",
+      "git_blob_sha": "dcdf8684d0b590e98c9e9a3550bc7cef7b336584"
+    },
+    {
+      "path": "Training/Quince 4/r0_105_100.jpg",
+      "git_blob_sha": "c697dbd198293e7d8b2d496add4197c30c415f90"
+    },
+    {
+      "path": "Training/Quince 4/r0_106_100.jpg",
+      "git_blob_sha": "10b6a44bbd7320d415447f25fd06ce5c43e5d337"
+    },
+    {
+      "path": "Training/Quince 4/r0_108_100.jpg",
+      "git_blob_sha": "5195da4394af290d76bec18a35bb322fa2fa7fb2"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/0_100.jpg",
+      "git_blob_sha": "f08521242881f2fbe92bf28471c79347326048a8"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/1_100.jpg",
+      "git_blob_sha": "6290a20aa14b9da0983561c75355cd5a049672a5"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/10_100.jpg",
+      "git_blob_sha": "810c746c3d075da0bb8555fcfecb1c525875177f"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/100_100.jpg",
+      "git_blob_sha": "4af66493e8d881b9515397f9308ca22aafa160f9"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/101_100.jpg",
+      "git_blob_sha": "f275da0085e8e6f9d420195033c6241b684db50d"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/102_100.jpg",
+      "git_blob_sha": "98188b47382a648f050bda8260c8f5c629adae72"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/103_100.jpg",
+      "git_blob_sha": "ee04d0ad05aab8fd87bea502dbf5426bd0e4d8b4"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/104_100.jpg",
+      "git_blob_sha": "5d357ecae90a13f4fc2bd7320c609d833522191b"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/105_100.jpg",
+      "git_blob_sha": "d52935f55fd59ad8aecd3518f6ebbbb034b13f4d"
+    },
+    {
+      "path": "Training/Tomato Cherry Red 1/106_100.jpg",
+      "git_blob_sha": "999de7feeb469c7c016cb89abed22d30817eb4dc"
+    }
+  ]
+}

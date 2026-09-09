@@ -21,6 +21,8 @@ def create_spark_session(app_name: str = "P9 Big Data Fruits") -> SparkSession:
         .appName(app_name)
         .getOrCreate()
     )
+    # Réduit les messages d'information sans masquer les erreurs du traitement.
+    spark.sparkContext.setLogLevel("WARN")
     return spark
 
 
@@ -38,7 +40,7 @@ def read_image_paths(spark: SparkSession, images_path: str):
         .load(images_path)
     )
 
-    # input_file_name recupere le chemin exact du fichier lu par Spark.
+    # binaryFile fournit déjà le chemin exact dans sa colonne path.
     df = df.withColumn("image_path", col("path"))
 
     # Le label est extrait depuis le nom du dossier parent.

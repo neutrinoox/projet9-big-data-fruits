@@ -1,46 +1,24 @@
 # Installation locale
 
-## 1. Récupérer le projet
+Prérequis : Python 3.10 à 3.12, Java 17, espace disque suffisant pour TensorFlow, Spark et le dataset.
+La version Python des workers doit être la même que celle du driver.
 
 ```bash
-git clone https://github.com/neutrinoox/projet9-big-data-fruits.git
-cd projet9-big-data-fruits
-```
-
-## 2. Créer l'environnement
-
-```bash
+# Crée un environnement isolé, puis l'active sous Linux/macOS.
 python -m venv .venv
+source .venv/bin/activate
+# Installe les versions directes communes au projet et vérifie les dépendances.
+python -m pip install -r requirements.txt
+python -m pip check
+# Vérifie Java, Python et le comportement de la préparation des données.
+java -version
+python --version
+python -m unittest discover -v
 ```
 
-Windows : `.venv\\Scripts\\activate`
+Sous Windows, activer `.venv\Scripts\activate` ; pour Spark, privilégier Colab ou Linux si la configuration
+Java/Hadoop locale bloque. Le notebook fournit un parcours Colab qui exécute les calculs dans des
+sous-processus frais après installation des dépendances, afin d'éviter les anciens imports TensorFlow.
 
-Mac/Linux : `source .venv/bin/activate`
-
-## 3. Installer
-
-```bash
-pip install -r requirements.txt
-```
-
-Java doit aussi être installé pour PySpark.
-
-## 4. Préparer les données
-
-```bash
-python -m scripts.download_dataset
-python -m src.validate_dataset
-python -m scripts.prepare_sample
-```
-
-## 5. Exécuter les preuves de concept
-
-```bash
-python -m src.pipeline_local --input data/sample
-python -m src.pipeline_spark --input data/sample --output outputs/spark_pca
-```
-
-Résultats attendus :
-
-- `outputs/local_features_pca.parquet` ;
-- dossier Parquet `outputs/spark_pca`.
+La copie du dataset se fait avec un dossier Training explicitement choisi. Voir `commands.md`.
+Sur EMR, utiliser uniquement le bootstrap et `requirements-emr.txt` : ne pas remplacer le Spark fourni par AWS.

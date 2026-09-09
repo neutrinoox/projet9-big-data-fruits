@@ -1,0 +1,111 @@
+{
+  "checked_on": "2026-09-09",
+  "workflow_url": "https://github.com/neutrinoox/projet9-big-data-fruits/actions/runs/34185203622",
+  "head_commit": "0048152090ca2ce46d66518019d0223b8f4679fb",
+  "ci_checkout_commit": "2ec067cf5ed20d25931a8ba26297e2e9e5238c49",
+  "note": "Exécution GitHub Actions local[2], pas une exécution EMR/S3 ni une preuve multi-machine.",
+  "metrics": {
+    "active_partitions": 2,
+    "application_id": "local-1788839871797",
+    "batch_size": 8,
+    "components": 20,
+    "created_utc": "2026-09-08T03:58:43.481561+00:00",
+    "explained_variance": 0.969049308245715,
+    "features": 2048,
+    "images": 100,
+    "input": "/home/runner/work/projet9-big-data-fruits/projet9-big-data-fruits/data/sample-ci",
+    "label_counts": [
+      {
+        "count": 10,
+        "label": "Quince 4"
+      },
+      {
+        "count": 10,
+        "label": "Mushroom champignon 2"
+      },
+      {
+        "count": 10,
+        "label": "Grape Pink 1"
+      },
+      {
+        "count": 10,
+        "label": "Peach 5"
+      },
+      {
+        "count": 10,
+        "label": "Apple Red Delicious 1"
+      },
+      {
+        "count": 10,
+        "label": "Cactus fruit green 1"
+      },
+      {
+        "count": 10,
+        "label": "Pepper Green 1"
+      },
+      {
+        "count": 10,
+        "label": "Cherry Wax Yellow 1"
+      },
+      {
+        "count": 10,
+        "label": "Almonds 1"
+      },
+      {
+        "count": 10,
+        "label": "Tomato Cherry Red 1"
+      }
+    ],
+    "max_images": 100,
+    "output": "/home/runner/work/projet9-big-data-fruits/projet9-big-data-fruits/outputs/real-fruits",
+    "partition_distribution": [
+      {
+        "count": 50,
+        "worker_host": "runnervmejwal",
+        "worker_partition": 0
+      },
+      {
+        "count": 50,
+        "worker_host": "runnervmejwal",
+        "worker_partition": 1
+      }
+    ],
+    "requested_components": 20,
+    "requested_partitions": 2,
+    "seconds": {
+      "cnn_and_validation": 17.344294418000004,
+      "pca": 27.944720781,
+      "read": 6.078069983999995,
+      "total_before_metrics": 53.850260547999994
+    },
+    "spark_master": "local[2]",
+    "spark_version": "3.5.2",
+    "status": "validated",
+    "variance_by_component": [
+      0.21394507809259344,
+      0.1831489403821712,
+      0.13496273747754284,
+      0.10533941617701693,
+      0.07979324979484965,
+      0.05788502102191065,
+      0.05092745408355243,
+      0.03880036428945637,
+      0.02695823146843953,
+      0.016870030358457827,
+      0.013307532794971521,
+      0.010480596167165604,
+      0.008298505466115056,
+      0.006539702250734069,
+      0.006428691044388828,
+      0.0041595160319820605,
+      0.0033478281493443474,
+      0.002783004254736733,
+      0.002742533333431032,
+      0.0023308756068548308
+    ],
+    "weights": "imagenet",
+    "worker_hosts": [
+      "runnervmejwal"
+    ]
+  }
+}

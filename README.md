@@ -7,10 +7,11 @@ Le projet prépare un traitement distribué, sans entraîner un classificateur d
 
 ## État réel
 
-Le notebook précédent contenait une exécution locale réussie sur 100 images et 10 classes.
-La version corrigée doit être réexécutée : les anciennes sorties ont été retirées pour ne pas
-les attribuer au nouveau code. Consulter [le bilan de validation](docs/validation.md).
-**Aucune exécution AWS n'est encore attestée par ce dépôt.**
+La chaîne corrigée a été exécutée avec succès sur GitHub Actions : **100 images réelles, 10 classes,
+20 composantes PCA, 96,90 % de variance conservée et deux partitions actives**.
+Consulter [le bilan et les preuves de validation](docs/validation.md).
+Le notebook Colab reste à exécuter dans son interface ; ses anciennes sorties ont été retirées.
+**Aucune exécution EMR/S3 n'est encore attestée : c'est la prochaine étape.**
 
 ## Corrections de préparation AWS
 
